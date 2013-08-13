@@ -1,5 +1,10 @@
 class TaskViewController < UIViewController
 
+  def textFieldShouldReturn(textfield)
+    textfield.resignFirstResponder
+    return true
+  end
+
   private
 
   def loadView
