@@ -20,7 +20,7 @@ class TaskViewController < UIViewController
 
     UIView.transitionFromView(self.view,
                               toView: @listViewController.view,
-                              duration: 0.3,
+                              duration: 0.5,
                               options: UIViewAnimationOptionTransitionFlipFromLeft,
                               completion: nil)
   end

@@ -4,6 +4,16 @@ class ListViewController < UIViewController
     layoutView
   end
 
+  def goBack(sender)
+    @taskViewController = TaskViewController.alloc.init
+    @taskViewController.view.frame = self.view.frame
+    UIView.transitionFromView(self.view,
+                              toView: @taskViewController.view,
+                              duration: 0.5,
+                              options: UIViewAnimationOptionTransitionCurlDown,
+                              completion: nil)
+  end
+
   private
 
   def layoutView
@@ -36,5 +46,20 @@ class ListViewController < UIViewController
     @taskNamesLabel.text = Task.list.map { |task| "#{task.name} (#{task.priority})" }.join(", ")
 
     self.view.addSubview(@taskNamesLabel)
+
+    # Ajout du bouton de retour au formulaire
+    @backButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
+    @backButton.frame = CGRectMake(10, 400, 300, 40)
+
+    @backButton.setBackgroundImage(UIImage.imageNamed("btnValidate.png"), forState:UIControlStateNormal)
+    @backButton.setTitle("Ajouter une tâche", forState: UIControlStateNormal)
+    @backButton.setTitleColor(UIColor.whiteColor, forState: UIControlStateNormal)
+    @backButton.titleLabel.font = UIFont.fontWithName("AvenirNext-DemiBold", size: 20)
+
+    @backButton.addTarget(self,
+                              action: "goBack:",
+                              forControlEvents: UIControlEventTouchUpInside)
+
+    self.view.addSubview(@backButton)
   end
 end
