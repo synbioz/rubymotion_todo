@@ -28,5 +28,18 @@ class TaskViewController < UIViewController
     @headerTitle.font = UIFont.fontWithName("AvenirNext-Bold", size: 25)
 
     self.view.addSubview(@headerTitle)
+
+    # Ajout du champ texte pour le nom de la tâche
+    @titleTextField = UITextField.alloc.initWithFrame([[10, 75], [300, 45]])
+    @titleTextField.background = UIImage.imageNamed("bgTextField.png")
+    @titleTextField.textColor = UIColor.colorWithRed(0.451, green:0.451, blue:0.451, alpha:1.0)
+    @titleTextField.font = UIFont.fontWithName("AvenirNextCondensed-DemiBold", size:25)
+    @titleTextField.textAlignment = UITextAlignmentCenter
+    @titleTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter
+    @titleTextField.placeholder = "Nom de la tâche"
+
+    @titleTextField.delegate = self
+
+    self.view.addSubview(@titleTextField)
   end
 end
