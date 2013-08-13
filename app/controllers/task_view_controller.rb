@@ -15,7 +15,14 @@ class TaskViewController < UIViewController
     @titleTextField.text = ""
     @prioritySegmentedControl.selectedSegmentIndex = 0
 
-    NSLog("%@", Task.list.map { |task| "#{task.name} (#{task.priority})" }.join(", "))
+    @listViewController = ListViewController.alloc.init
+    @listViewController.view.frame = self.view.frame
+
+    UIView.transitionFromView(self.view,
+                              toView: @listViewController.view,
+                              duration: 0.3,
+                              options: UIViewAnimationOptionTransitionFlipFromLeft,
+                              completion: nil)
   end
 
   private
