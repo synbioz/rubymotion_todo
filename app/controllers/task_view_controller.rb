@@ -5,6 +5,19 @@ class TaskViewController < UIViewController
     return true
   end
 
+  def addTask(sender)
+    task = Task.new
+    task.name = @titleTextField.text
+
+    priority_index = @prioritySegmentedControl.selectedSegmentIndex
+    task.priority = @priorityValues[priority_index]
+
+    @titleTextField.text = ""
+    @prioritySegmentedControl.selectedSegmentIndex = 0
+
+    NSLog("%@", Task.list.map { |task| "#{task.name} (#{task.priority})" }.join(", "))
+  end
+
   private
 
   def loadView
