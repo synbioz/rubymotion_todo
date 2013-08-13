@@ -41,5 +41,24 @@ class TaskViewController < UIViewController
     @titleTextField.delegate = self
 
     self.view.addSubview(@titleTextField)
+
+    # Ajout d'un label pour la priorité
+    @prorityLabel = UILabel.alloc.initWithFrame([[10, 140], [300, 30]])
+    @prorityLabel.text = "Priorité"
+    @prorityLabel.color = UIColor.colorWithRed(0.400, green: 0.400, blue: 0.400, alpha: 1.0)
+    @prorityLabel.backgroundColor = UIColor.clearColor
+    @prorityLabel.font = UIFont.fontWithName("AvenirNext-DemiBold", size: 20)
+    @prorityLabel.textAlignment = UITextAlignmentCenter
+
+    self.view.addSubview(@prorityLabel)
+
+    # Ajout d'un sélecteur de priorité
+    @priorityValues = ["Bas", "Haut"]
+
+    @prioritySegmentedControl = UISegmentedControl.alloc.initWithItems(@priorityValues)
+    @prioritySegmentedControl.frame = [[10, 170], [300, 30]]
+    @prioritySegmentedControl.selectedSegmentIndex = 0
+
+    self.view.addSubview(@prioritySegmentedControl)
   end
 end
