@@ -65,5 +65,20 @@ class TaskViewController < UIViewController
     @prioritySegmentedControl.selectedSegmentIndex = 0
 
     self.view.addSubview(@prioritySegmentedControl)
+
+    # Ajout du bouton de soumission du formulaire
+    @validateButton = UIButton.buttonWithType(UIButtonTypeRoundedRect)
+    @validateButton.frame = CGRectMake(10, 400, 300, 40)
+
+    @validateButton.setBackgroundImage(UIImage.imageNamed("btnValidate.png"), forState:UIControlStateNormal)
+    @validateButton.setTitle("Valider", forState: UIControlStateNormal)
+    @validateButton.setTitleColor(UIColor.whiteColor, forState: UIControlStateNormal)
+    @validateButton.titleLabel.font = UIFont.fontWithName("AvenirNext-DemiBold", size: 20)
+
+    @validateButton.addTarget(self,
+                              action: "addTask:",
+                              forControlEvents: UIControlEventTouchUpInside)
+
+    self.view.addSubview(@validateButton)
   end
 end
