@@ -39,6 +39,10 @@ class ListViewController < UITableViewController
     60
   end
 
+  def tableView(tableView, didSelectRowAtIndexPath:indexPath)
+    p "row #{indexPath.row} selected"
+  end
+
   private
 
   def loadTodos
