@@ -15,7 +15,7 @@ class TaskViewController < UIViewController
     @titleTextField.text = ""
     @prioritySegmentedControl.selectedSegmentIndex = 0
 
-    @listViewController = ListViewController.alloc.init
+    @listViewController = ListViewController.alloc.initWithStyle(UITableViewStylePlain)
     @listViewController.view.frame = self.view.frame
 
     UIView.transitionFromView(self.view,
