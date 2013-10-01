@@ -31,6 +31,8 @@ class ListViewController < UITableViewController
     headerTitle.font = UIFont.fontWithName("AvenirNext-Bold", size: 25)
 
     headerImageView.addSubview(headerTitle)
+    headerImageView.addSubview(deleteButton)
+    headerImageView.setUserInteractionEnabled(true)
 
     headerImageView
   end
@@ -43,10 +45,31 @@ class ListViewController < UITableViewController
     p "row #{indexPath.row} selected"
   end
 
+  def deleteSelectedCell
+    selected = self.tableView.indexPathForSelectedRow
+
+    if selected
+      @tasks.delete_at(selected.row)
+      self.tableView.deleteRowsAtIndexPaths([selected],
+        withRowAnimation:UITableViewRowAnimationMiddle)
+    end
+  end
+
   private
 
   def loadTodos
     @tasks = Task.list
     self.tableView.reloadData
+  end
+
+  def deleteButton
+    button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
+    button.setTitle("X", forState:UIControlStateNormal)
+    button.frame = [[0, 0], [50, 50]]
+    button.addTarget(self,
+      action:"deleteSelectedCell",
+      forControlEvents:UIControlEventTouchUpInside)
+
+    button
   end
 end

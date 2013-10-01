@@ -15,6 +15,10 @@ class Task
     @@list
   end
 
+  def delete_at(index)
+    @@list.delete_at(index)
+  end
+
   def toggle_status!
     @done = !@done
   end
