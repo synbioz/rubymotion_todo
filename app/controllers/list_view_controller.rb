@@ -32,6 +32,7 @@ class ListViewController < UITableViewController
 
     headerImageView.addSubview(headerTitle)
     headerImageView.addSubview(deleteButton)
+    headerImageView.addSubview(backButton)
     headerImageView.setUserInteractionEnabled(true)
 
     headerImageView
@@ -55,6 +56,16 @@ class ListViewController < UITableViewController
     end
   end
 
+  def goBack
+    @taskViewController = TaskViewController.alloc.init
+    @taskViewController.view.frame = self.view.frame
+    UIView.transitionFromView(self.view,
+                              toView: @taskViewController.view,
+                              duration: 0.5,
+                              options: UIViewAnimationOptionTransitionCurlDown,
+                              completion: nil)
+  end
+
   private
 
   def loadTodos
@@ -69,6 +80,19 @@ class ListViewController < UITableViewController
     button.addTarget(self,
       action:"deleteSelectedCell",
       forControlEvents:UIControlEventTouchUpInside)
+
+    button
+  end
+
+  def backButton
+    button = UIButton.buttonWithType(UIButtonTypeRoundedRect)
+    button.frame = [[270, 0], [50, 50]]
+
+    button.setTitle("<-", forState: UIControlStateNormal)
+
+    button.addTarget(self,
+                    action: "goBack",
+                    forControlEvents: UIControlEventTouchUpInside)
 
     button
   end
