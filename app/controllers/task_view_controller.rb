@@ -101,4 +101,8 @@ class TaskViewController < UIViewController
 
     self.view.addSubview(@validateButton)
   end
+
+  def prefersStatusBarHidden
+    true
+  end
 end
