@@ -17,7 +17,8 @@ class TodoTableViewCell < UITableViewCell
     self.addSubview(@background_image)
 
     self.addSubview(titleLabel)
-    self.addSubview(dateLabel)
+    # self.addSubview(dateLabel)
+    # self.addSubview(priorityImage) if @priority == "Haut"
   end
 
   def titleLabel
@@ -38,5 +39,11 @@ class TodoTableViewCell < UITableViewCell
     dateLabel.backgroundColor = UIColor.clearColor
     dateLabel.text = @date.strftime("%d/%m/%Y")
     dateLabel
+  end
+
+  def priorityImage
+    priorityImage = UIImageView.alloc.initWithImage(UIImage.imageNamed("important"))
+    priorityImage.frame = ([[290, 8], [29, 29]])
+    priorityImage
   end
 end
