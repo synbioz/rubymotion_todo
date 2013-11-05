@@ -14,6 +14,10 @@ class ListViewController < UITableViewController
     TodoTableViewCell.cellForTask(task, inTableView:tableView)
   end
 
+  def tableView(tableView, heightForRowAtIndexPath:indexPath)
+    50
+  end
+
   def tableView(tableView, viewForHeaderInSection:section)
     # Ajout d'un en-tête
     headerImageView = UIImageView.alloc.initWithFrame([[0, 0], [320, 60]])

@@ -13,15 +13,11 @@ class TodoTableViewCell < UITableViewCell
   end
 
   def layoutSubviews
-    if @background_image.nil?
-      @background_image = UIImageView.alloc.initWithImage(UIImage.imageNamed("bgCell"))
-      self.addSubview(@background_image)
-    end
+    @background_image = UIImageView.alloc.initWithImage(UIImage.imageNamed("bgCell"))
+    self.addSubview(@background_image)
 
-    @titleLabel = titleLabel if @titleLabel.nil?
-    @titleLabel.text = @title
-
-    self.addSubview(@titleLabel)
+    self.addSubview(titleLabel)
+    self.addSubview(dateLabel)
   end
 
   def titleLabel
@@ -30,6 +26,17 @@ class TodoTableViewCell < UITableViewCell
     titleLabel.textColor = UIColor.blueColor
     titleLabel.adjustsFontSizeToFitWidth = true
     titleLabel.backgroundColor = UIColor.clearColor
+    titleLabel.text = @title
     titleLabel
+  end
+
+  def dateLabel
+    dateLabel = UILabel.alloc.initWithFrame([[10, 15], [300, 40]])
+    dateLabel.font = UIFont.fontWithName("AmericanTypewriter", size: 12)
+    dateLabel.textColor = UIColor.blackColor
+    dateLabel.adjustsFontSizeToFitWidth = true
+    dateLabel.backgroundColor = UIColor.clearColor
+    dateLabel.text = @date.strftime("%d/%m/%Y")
+    dateLabel
   end
 end
