@@ -11,4 +11,11 @@ class TodoTableViewCell < UITableViewCell
     cell.selectionStyle = UITableViewCellSelectionStyleNone
     cell
   end
+
+  def layoutSubviews
+    if @background_image.nil?
+      @background_image = UIImageView.alloc.initWithImage(UIImage.imageNamed("bgCell"))
+      self.addSubview(@background_image)
+    end
+  end
 end
