@@ -10,11 +10,8 @@ class ListViewController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
-    cell = tableView.dequeueReusableCellWithIdentifier(CELL_REUSE_ID) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier: CELL_REUSE_ID)
     task = @tasks[indexPath.row]
-    cell.textLabel.text = task.name
-    cell.detailTextLabel.text = [task.created_at.strftime("%d/%M/%Y"), task.priority].join(" - ")
-    cell
+    TodoTableViewCell.cellForTask(task, inTableView:tableView)
   end
 
   def tableView(tableView, viewForHeaderInSection:section)
