@@ -15,6 +15,7 @@ class AppDelegate
     listViewController.title = "Tâches"
 
     tabBarController = UITabBarController.alloc.init
+    tabBarController.tabBar.frame = [[0, UIScreen.mainScreen.bounds.size.height - 20], [UIScreen.mainScreen.bounds.size.width, 20]]
     tabBarController.viewControllers = [
       taskViewController,
       UINavigationController.alloc.initWithRootViewController(listViewController)
