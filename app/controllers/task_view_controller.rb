@@ -15,14 +15,7 @@ class TaskViewController < UIViewController
     @titleTextField.text = ""
     @prioritySegmentedControl.selectedSegmentIndex = 0
 
-    @listViewController = ListViewController.alloc.initWithStyle(UITableViewStylePlain)
-    @listViewController.view.frame = self.view.frame
-
-    UIView.transitionFromView(self.view,
-                              toView: @listViewController.view,
-                              duration: 0.5,
-                              options: UIViewAnimationOptionTransitionFlipFromLeft,
-                              completion: nil)
+    self.tabBarController.selectedIndex = 1
   end
 
   private
