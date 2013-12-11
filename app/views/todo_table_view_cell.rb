@@ -17,8 +17,8 @@ class TodoTableViewCell < UITableViewCell
     self.addSubview(@background_image)
 
     self.addSubview(titleLabel)
-    # self.addSubview(dateLabel)
-    # self.addSubview(priorityImage) if @priority == "Haut"
+    self.addSubview(dateLabel)
+    self.addSubview(priorityImage) if @priority == "Haut"
   end
 
   def titleLabel
