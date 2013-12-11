@@ -18,6 +18,18 @@ class ListViewController < UITableViewController
     50
   end
 
+  def viewDidLoad
+    self.navigationController.navigationBar.setBackgroundImage(UIImage.imageNamed("bgHeader.png"), forBarMetrics:UIBarMetricsDefault)
+
+    self.navigationController.navigationBar.titleTextAttributes = {
+      NSForegroundColorAttributeName => UIColor.colorWithRed(0.702, green: 0.702, blue: 0.702, alpha: 1.000),
+      NSFontAttributeName => UIFont.fontWithName("AvenirNext-Bold", size: 25)
+    }
+
+    self.title = "RubyMotion Todo"
+    self.navigationController.tabBarItem.title = "Tâches"
+  end
+
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
     p "row #{indexPath.row} selected"
   end
