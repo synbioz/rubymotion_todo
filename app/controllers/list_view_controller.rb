@@ -97,4 +97,8 @@ class ListViewController < UITableViewController
 
     button
   end
+
+  def prefersStatusBarHidden
+    true
+  end
 end
